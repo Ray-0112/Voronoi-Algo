@@ -1,0 +1,3 @@
+打包exe檔
+先進入虛擬環境，在輸
+pyinstaller -F main.py

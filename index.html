@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Voronoi</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+
+				<!-- One -->
+					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+						<div class="content">
+							<h1>Voronoi Algo</h1>
+							<p class="major">中山大學資訊工程所 M113040019 余承叡</p>
+							<ul class="actions stacked">
+								<li><a href="#first" class="button big wide smooth-scroll-middle">報告Get Started</a></li>
+							</ul>
+						</div>
+						<div class="image">
+							<img src="images/UI.png" alt="" />
+						</div>
+					</section>
+
+				<!-- Two -->
+					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
+						<div class="content">
+							<h2>軟體規格書</h2>
+							<p>輸入與輸出規格:<br>輸入文字檔如	
+								(<a href="input_data_sample.txt" target="blank">範例輸入文字檔</a>)
+								或是自己點在畫布上，輸出文字檔如(<a href="ouput_data_sample.txt">範例輸出文字檔</a>)<br><br>
+								功能與介面規格:<br>按 Run 鍵執行演算法，按 Step_by_step 鍵為一步一步做(先按run鍵才可按step_by_step)，按 Load_file 讀入檔案，按 Clear 鍵清空畫布，按Display讀入輸出檔案顯示在畫布上，畫布為600 * 600大小<br><br>
+								軟體測試規劃書:<br>
+								1～3 點：三點以下直接解，主要測試共點、垂直、水平等特殊案例<br>
+								4～6 點：三點以上會 Divide 及 Merge 一次<br>
+								7～12 點：七點以上會 Divide 及 Merge 多次<br>
+								大於 12 點：多點測試<br></p>
+<!-- 							<ul class="actions stacked">
+								<li><a href="#" class="button">Learn More</a></li>
+							</ul> -->
+						</div>
+						<div class="image">
+							<img src="images/button.png" alt="" />
+						</div>
+					</section>
+
+				<!-- Three -->
+					<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+						<div class="content">
+							<br><br><br>
+							<h2>軟體說明</h2>
+							<p>利用 venv 建立虛擬環境，並在環境中安裝 python PyQt5、 numpy，下 python main.py 的指令即可執行，或是直接下載 main.exe 直接執行即可使用</p>
+							<br><br><br><br>
+<!-- 							<ul class="actions stacked">
+								<li><a href="#" class="button">Learn More</a></li>
+							</ul> -->
+						</div>
+						<div class="image">
+							<img src="images/QT5.png" alt="" />
+						</div>
+					</section>
+
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<div class="index align-left">
+								<section>
+										<header>
+											<h3>程式設計</h3>
+										</header>
+										<div class="content">
+
+											<dl>
+												<dt>資料結構</dt>
+												<dd>
+													<p>此 Voronoi 程式中最主要用到的資料結構就是 class 的 Edge，其中有紀錄兩點所構成的 edge 長度、 edge 的向量、 edge 的斜率、 edge 的中間點、 edge 的中垂線，以及構成 edge 的兩個點，最後再將所有的邊(class Egde)放入陣列當中</p>
+												</dd>
+												<dt>特別技巧</dt>
+												<dd>
+													<p>1. 雖然畫布只有600 * 600的大小，但是要把它視為超過600 * 600的大小，因為有可能外心在畫布的外面，如果只有限制在0～600的話就GG<br>2. 判斷是否為銳角三角形不需要去計算角度，只要去計算如果兩條較小的邊平方和不大於第三邊平方就代表是銳角</p>
+												</dd>
+												<dt>改良之處</dt>
+												<dd>
+													<p>1. 算出兩線或三線交會的那個點時，要對應到一條線的中間點，如果是垂直的話會有些許的誤差大概落在小數點後第一位，而這時我會給他一個區間為誤差的區間，因此如果計算兩點非常相近時，就會自動落入那個區間，則忽略掉，因此這部分需要改良<br>2. Merge 時的剪線也有出了問題，在4～6的點大多都正確，但超過6個點以後就要看天了，因此剪線的部分也需要改良</p>
+												</dd>
+											</dl>
+
+										</div>
+									</section>
+							</div>
+						</div>
+					</section>
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<div class="index align-left">
+								<section>
+										<header>
+											<h3>軟體測試與實驗結果</h3>
+										</header>
+										<div class="content">
+
+											<dl>
+												<dt>程式語言</dt>
+												<dd>
+													<p>Python 3.10.7</p>
+												</dd>
+												<dt>作業系統</dt>
+												<dd>
+													<p>Windows 11 家用版</p>
+												</dd>
+												<dt>編輯器</dt>
+												<dd>
+													<p>Visual Studio Code</p>
+												</dd>
+												<dt>處理器</dt>
+												<dd>
+													<p>Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz   2.20 GHz</p>
+												</dd>
+												<dt>記憶體容量</dt>
+												<dd>
+													<p>16 GB</p>
+												</dd>
+												<dt>系統類型</dt>
+												<dd>
+													<p>64 位元作業系統，x64 型處理器</p>
+												</dd>
+												<dt>極限數據</dt>
+												<dd>
+													<p>6 個點</p>
+												</dd>
+												<dt>測驗輸入檔</dt>
+												<dd>
+													<p><a href="Real_input_data.txt">測驗輸入檔</a></p>
+												</dd>
+												<dt>測驗輸出檔</dt>
+												<dd>
+													<p><a href="Real_output_sample.txt">測驗輸出檔</a></p>
+												</dd>
+												<dt>無法執行案例</dt>
+												<dd>
+													<p>1. 兩點太相近: 因為在算外心時會有小於1的誤差，因此有加上一個容忍範圍，而導致太相近的點可能會誤認為此<br>
+														2. 7點以上: 因為在 merge 剪線時沒有處理好，因此在大於 7 點時會有錯<br></p>
+												</dd>
+											</dl>
+
+										</div>
+									</section>
+
+							</div>
+						</div>
+
+						<!-- Gallery -->
+							<div class="gallery style2 medium lightbox onscroll-fade-in">
+								<article>
+									<a href="images/gallery/fulls/4.png" class="image">
+										<img src="images/gallery/thumbs/4.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>直角三角形</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/5.png" class="image">
+										<img src="images/gallery/thumbs/5.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>銳角三角形</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/6.png" class="image">
+										<img src="images/gallery/thumbs/6.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>鈍角三角形</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/9.png" class="image">
+										<img src="images/gallery/thumbs/9.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>正方形</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/10.png" class="image">
+										<img src="images/gallery/thumbs/10.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>菱形</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/13.png" class="image">
+										<img src="images/gallery/thumbs/13.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>垂直兼水平共線</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/14.png" class="image">
+										<img src="images/gallery/thumbs/14.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>隨意五點</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/15.png" class="image">
+										<img src="images/gallery/thumbs/15.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>隨意五點</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/16.png" class="image">
+										<img src="images/gallery/thumbs/16.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>隨便測試</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/17.png" class="image">
+										<img src="images/gallery/thumbs/17.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>隨便測試</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+								<article>
+									<a href="images/gallery/fulls/18.png" class="image">
+										<img src="images/gallery/thumbs/18.png" alt="" />
+									</a>
+									<div class="caption">
+										<h3>隨便測試</h3>
+										<ul class="actions fixed">
+											<li><span class="button small">Details</span></li>
+										</ul>
+									</div>
+								</article>
+							</div>
+
+					</section>
+
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<div class="index align-left">
+								<section>
+										<header>
+											<h3>結論與心得</h3>
+										</header>
+										<div class="content">
+
+											<dl>
+												<dt>結論</dt>
+												<dd>
+													<p> 首先在選擇程式語言上先選擇了Python，因為聽學長們推薦使用Python Qt5的套件，而在期中demo所做的是最基本的情況(三個點以下)，因為一開始是自己憑空想像，因此是沒有使用向量的概念，而是單純算邊、點都不含方向的概念，等到之後要切線時才發現自己無法決定要切哪一段的線，之後就要開始考慮很多的特殊情況，例如共線、平行、垂直。<br><br> 期末的部分則是最大的魔王，一開始完全沒有想法，所以只好先寫convex hull，再來到找hyperplane時，完全不知道演算法該怎麼做，之後重複看老師在網路上的影片才有個頭緒，按照從上找到下，一個一個的中垂線去找對應到的兩個點，而這時候我的資料結構就出來問題，沒有記到我要使用到的資訊，之後才趕快將之前寫的資料結構再加上那個資訊，但是也就導致程式碼沒有很完整的考慮過再去實作，可能處處都會有bug的感覺，然後寫完hyperplane時發現又有bug，debug好一陣子才突然想到老師說hyperplane只會由上往下走，我就將這個條件設下，於是乎bug就找到了，最後在剪線的時候，詢問了許多學長，使用了很多種不同的方法，但是都還是會有bug，只好放棄7點以上，只拿6點以下的分數，因為我知道如果要找這個bug可能會需要動到更多之前的程式碼，因此我也懶了，所以最後就這樣寫了個半成品出來</p>
+												</dd>
+												<dt>心得</dt>
+												<dd>
+													<p>這次程式真的讓我感覺我的程式又更進步了，主要進步的點是對於一個抽象的概念能夠用程式一步一步實踐出來，而且對於一個大的目標可以切成很多小的目標，再一步一步慢慢地實踐出來，不管是對於程式能力還是在思考問題的想法都有明顯進步的感覺</p>
+												</dd>
+												<dt>可改進部分</dt>
+												<dd>
+													<p>希望一開始的時候就該去看老師提供的那個資料結構來實作，到後面再做 Merge 的時候需要一些資訊實才有完整且正確的紀錄，而不是再去算一遍</p>
+												</dd>
+
+											</dl>
+
+										</div>
+									</section>
+							</div>
+						</div>
+					</section>
+					<section class="wrapper style1 align-center">
+						<div class="inner">
+							<div class="index align-left">
+								<section>
+									<header>
+											<h3>附錄</h3>
+										</header>
+										<div class="content">
+											<dl>
+												<dt>程式碼</dt>
+												<dd>
+													<p><a href="https://drive.google.com/drive/folders/1Wwuevpccgn0hNvl4suv1mKEB0kqTL2mQ?usp=sharing" target="blank">連結</a></p>
+												</dd>
+												<dt>測驗輸入檔</dt>
+												<dd>
+													<p><a href="Real_input_data.txt" target="blank">連結</a></p>
+												</dd>
+												<dt>測驗輸出檔</dt>
+												<dd>
+													<p><a href="Real_output_sample.txt" target="blank">連結</a></p>
+												</dd>
+												<dt>相關資料</dt>
+												<dd>
+													<p><a href="https://blog.csdn.net/weixin_44382897/article/details/103578946">Python Qt5介面</a><br>
+														<a href="https://web.ntnu.edu.tw/~algo/ConvexHull.html">Convex Hull (divide and conquer)</a><br>
+														<a href="https://blog.csdn.net/csdn_12121724/article/details/82844526">兩線段相交的點</a></p>
+
+												</dd>
+											</dl>
+
+										</div>
+				<!-- Seven -->
+							</div>
+						</div>
+					</section>
+
+
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
